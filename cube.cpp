@@ -1,6 +1,8 @@
 #include "cube.h"
 
+/*Draws a representation of the given Cube object in the window*/
 void Cube::draw_cube(TDT4102::AnimationWindow& window){
+    
     int start_x = 0;
     int start_y = 0;
     for (int face=0; face<6; face++){
