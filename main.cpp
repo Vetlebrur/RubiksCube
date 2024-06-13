@@ -7,6 +7,7 @@ Make a conversion from string to cube moves, that it then executes.
 Make some of the moves as efficient as possible (R' x' mainly but maybe also z z'. All other moves apart from R and U might have better solutions as well),
     removing the need for multiple function calls
 Introduce inputs for the user
+Create a scrambler
 Create a solver
 Create an artificial intelligence that can be trained on solving the cube
 */
