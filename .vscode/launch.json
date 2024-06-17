@@ -1,14 +1,22 @@
 {
-    "configurations": [
-        {
-            "name": "Build and Run Debug",
-            "type": "lldb",
-            "request": "launch",
-            "program": "${workspaceFolder}/builddir/program",
-            "args": [],
-            "cwd": "${workspaceFolder}",
-            "preLaunchTask": "Build Executable",
-            "internalConsoleOptions": "neverOpen",
-        }
-    ]
+  "configurations": [
+    {
+      "name": "Build and Run Debug",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/builddir/program",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build Executable",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/vetlebrur/Documents/GitHub/RubiksCube",
+      "program": "/Users/vetlebrur/Documents/GitHub/RubiksCube/build/Debug/outDebug"
+    }
+  ]
 }

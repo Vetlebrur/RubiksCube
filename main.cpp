@@ -1,8 +1,10 @@
 #include "std_lib_facilities.h"
 #include "AnimationWindow.h"
 #include "cube.h"
+#include "cube3D.h"
 /*
 TODO:
+MAP 3D CUBE ONTO 2D PLANE GRAPHICS
 Make a conversion from string to cube moves, that it then executes.
 Make some of the moves as efficient as possible (R' x' mainly but maybe also z z'. All other moves apart from R and U might have better solutions as well),
     removing the need for multiple function calls
