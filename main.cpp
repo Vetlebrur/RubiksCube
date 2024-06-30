@@ -21,6 +21,7 @@ constexpr int cube_tile_padding = 5;
 int main() {
     TDT4102::AnimationWindow window(100,100,1024,1024);
     Cube cube = Cube(cube_x, cube_y, cube_tile_size, cube_tile_padding);
+    Cube3D cube3D = Cube3D(cube_x, cube_y, cube_tile_size, cube_tile_padding);
     // U' D' L' B' F' R'
     // cube.move_U_prime();
     // cube.move_D_prime();
@@ -32,7 +33,7 @@ int main() {
     
     while(!window.should_close()) {
         window.setBackgroundColor(Color::black);
-        cube.draw_cube(window);
+        cube3D.draw(window);
 
         window.next_frame();
     }

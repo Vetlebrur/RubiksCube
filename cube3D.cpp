@@ -2,43 +2,115 @@
 
 
 /*
-int cornersPermutation[] = {0, 1, 2, 3, 4, 5, 6, 7};
-int edgesPermutation[] = {0, 1, 2, 3, 4, 5, 6, 7};
-int cornersOrientation[] = {0, 0, 0, 0, 0, 0, 0, 0};
-int edgesOrientation[] = {0, 0, 0, 0, 0, 0, 0, 0}; 
-
+Facelet form for drawing the cube:
         Y
   O   B   R   G
         W
+
+        0
+    1   2   3   4
+        5
+    String of 54 characters, with num 0-5 representing the color of the sticker
+    UUUUUUUUULLLLLLLLLFFFFFFFFFRRRRRRRRRBBBBBBBBBDDDDDDDDD
+    000000000111111111222222222333333333444444444555555555
+
+    Geometric for spacially mapping the cube:
+
+    corners front and back:
+   4    -   5       7   -   6     
+    |          |        |         |  
+    0    -   1       3   -   2
+
+    sides front middle and back:
+
+    x   9   x       8   x  10     x  11  x
+    5   x   6       x   x   x      4   x   7
+    x   1   x       0   x   2      x   3   x
+
+
+
+
 */
+int cornersPermutation[] = {0, 1, 2, 3, 4, 5, 6, 7};
+int edgesPermutation[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ,10, 11};
+int cornersOrientation[] = {0, 0, 0, 0, 0, 0, 0, 0};
+int edgesOrientation[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; 
+string cubeString = "000000000111111111222222222333333333444444444555555555";
+
+
+string Cube3D::cubeToFacelet(){
+    return ".";
+}
 
 void Cube3D::draw(AnimationWindow& window){
+    Color stickerColor = Color::white;
+    for (int i = 0; i<54;i++){
+        if (i <9){//top
+            window.draw_rectangle(
+            {cube_x+cube_tile_size*(i%3+3)+cube_tile_padding*(i%3+3),
+            cube_y+cube_tile_size*(i/3)+cube_tile_padding*(i/3)},
+            cube_tile_size,cube_tile_size,charToColorMap.at(cubeString.at(i)));
+        }
+        else if (i <18){//left
+            window.draw_rectangle(
+                {cube_x+cube_tile_size*(i%3)+cube_tile_padding*(i%3),
+                cube_y+cube_tile_size*(i/3)+cube_tile_padding*(i/3)}
+                ,cube_tile_size,cube_tile_size,charToColorMap.at(cubeString.at(i)));
+        }
+        else if (i <27){//front
+            window.draw_rectangle(
+                {cube_x+cube_tile_size*(i%3+3)+cube_tile_padding*(i%3+3),
+                cube_y+cube_tile_size*(i/3-3)+cube_tile_padding*(i/3-3)}
+                ,cube_tile_size,cube_tile_size,charToColorMap.at(cubeString.at(i)));
+        }
+        else if (i <36){//right
+            window.draw_rectangle(
+                {cube_x+cube_tile_size*(i%3+6)+cube_tile_padding*(i%3+6),
+                cube_y+cube_tile_size*(i/3-6)+cube_tile_padding*(i/3-6)}
+                ,cube_tile_size,cube_tile_size,charToColorMap.at(cubeString.at(i)));
+        }
+        else if (i <45){//back
+            window.draw_rectangle(
+                {cube_x+cube_tile_size*(i%3+9)+cube_tile_padding*(i%3+9),
+                cube_y+cube_tile_size*(i/3-9)+cube_tile_padding*(i/3-9)}
+                ,cube_tile_size,cube_tile_size,charToColorMap.at(cubeString.at(i)));
+        }
+        else if (i <54){//bottom
+            window.draw_rectangle(
+                {cube_x+cube_tile_size*(i%3+3)+cube_tile_padding*(i%3+3),
+                cube_y+cube_tile_size*(i/3-9)+cube_tile_padding*(i/3-9)},
+                cube_tile_size,cube_tile_size,charToColorMap.at(cubeString.at(i)));
+        }
+    }
+}
+
+void Cube3D::represent(AnimationWindow& window){
     // Draw the cube
-    int start_x = 0;
+    /*int start_x = 0;
     int start_y = 0;
-    Color sideColors[3] = {Color::white,Color::white,Color::white};
     for (int i=0; i<8;i++){ // draw corners
+        Color sideColors[3];
         switch (cornersPermutation[i]){
             case 0://WOG
-                Color sideColors[3] = {Color::white,Color::green,Color::orange};
+                sideColors[3] = {Color::white,Color::green,Color::orange};
                 break;
             case 1://WOB
-                Color sideColors[3] = {Color::white,Color::orange,Color::blue};
+                sideColors[3] = {Color::white,Color::orange,Color::blue};
                 break;
             case 2://WRB
-                Color sideColors[3] = {Color::white,Color::blue,Color::red};
+                sideColors[3] = {Color::white,Color::blue,Color::red};
                 break;
             case 3://WGR
-                Color sideColors[3] = {Color::white,Color::red,Color::green};
+                sideColors[3] = {Color::white,Color::red,Color::green};
                 break;
             case 4://YOG
-                Color sideColors[3] = {Color::yellow,Color::orange,Color::green};
+                sideColors[3] = {Color::yellow,Color::orange,Color::green};
                 break;
             case 5://YBO
-                Color sideColors[3] = {Color::yellow,Color::blue,Color::orange};
+                sideColors[3] = {Color::yellow,Color::blue,Color::orange};
                 break;
             case 6://YRB
-                Color sideColors[3] = {Color::yellow,Color::red,Color::blue};
+                sideColors[3] = {Color::yellow,Color::red,Color::blue};
                 break;
             case 7://YGR
                 Color sideColors[3] = {Color::yellow,Color::green,Color::red};
@@ -83,6 +155,7 @@ void Cube3D::draw(AnimationWindow& window){
             }
         }
     }
+    */
 }
 
 void Cube3D::move_R(){

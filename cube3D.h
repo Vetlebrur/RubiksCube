@@ -1,18 +1,19 @@
 #pragma once
 #include "AnimationWindow.h"
 #include <unordered_map>
+#include <string>
 using namespace TDT4102;
 using namespace std;
 
 class Cube3D{
     private:
-        std::unordered_map<int,Color> intToColorMap = {
-        {0,Color::white},
-        {1,Color::yellow},
-        {2,Color::red},
-        {3,Color::orange},
-        {4,Color::green},
-        {5,Color::blue}
+        std::unordered_map<char,Color> charToColorMap = {
+        {'0',Color::white},
+        {'1',Color::yellow},
+        {'2',Color::red},
+        {'3',Color::orange},
+        {'4',Color::green},
+        {'5',Color::blue}
     };
 
         int cube_x;
@@ -23,10 +24,13 @@ class Cube3D{
         int edgesPermutation[12] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         int cornersOrientation[8] = {0, 0, 0, 0, 0, 0, 0, 0};
         bool edgesOrientation[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; 
+        string cubeString = "000000000111111111222222222333333333444444444555555555";
 
     public:
         Cube3D(int cube_x,int cube_y,int cube_tile_size, int cube_tile_padding): 
         cube_x{cube_x}, cube_y{cube_y}, cube_tile_size{cube_tile_size}, cube_tile_padding{cube_tile_padding} {};
+
+        string cubeToFacelet();
 
         void swap_corners(int a,int b){
             swap(cornersPermutation[a],cornersPermutation[b]);
@@ -35,8 +39,9 @@ class Cube3D{
             swap(edgesPermutation[a],edgesPermutation[b]);
         }
 
+        void represent(AnimationWindow& window);
         void draw(AnimationWindow& window);
-        
+
         void move_U();
         void move_U_prime();
         void move_D();
