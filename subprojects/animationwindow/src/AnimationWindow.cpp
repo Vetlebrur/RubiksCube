@@ -337,11 +337,11 @@ TDT4102::Point TDT4102::AnimationWindow::getWindowDimensions() const {
     return dimensions;
 }
 
-int TDT4102::AnimationWindow::get_width() const {
+int TDT4102::AnimationWindow::width() const {
     return getWindowDimensions().x;
 }
 
-int TDT4102::AnimationWindow::get_height() const {
+int TDT4102::AnimationWindow::height() const {
     return getWindowDimensions().y;
 }
 

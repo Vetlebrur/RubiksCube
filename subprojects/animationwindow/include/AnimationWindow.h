@@ -120,8 +120,8 @@ class AnimationWindow {
     void show_error_dialog(const std::string& message) const;
 
     // Getters for the window dimensions
-    int get_width() const;
-    int get_height() const;
+    int width() const;
+    int height() const;
 
     void setBackgroundColor(TDT4102::Color newBackgroundColor);
 

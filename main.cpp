@@ -30,11 +30,14 @@ int main() {
     // cube.move_F_prime();
     // cube.move_R_prime();
     
-    
+    cube3D.move_B();
+    cube3D.move_U();
+
     while(!window.should_close()) {
         window.setBackgroundColor(Color::black);
         cube3D.draw(window);
-
+        cube3D.geometricToFacelet();
+        
         window.next_frame();
     }
     return 0;
