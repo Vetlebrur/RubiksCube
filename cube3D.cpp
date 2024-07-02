@@ -188,14 +188,14 @@ void Cube3D::move_B(){
     swap_edges(7,3);
     swap_edges(3,4);
 
-    cornersOrientation[cornersPermutation[0]] = (cornersOrientation[cornersPermutation[2]]+2)%3;
+    cornersOrientation[cornersPermutation[0]] = (cornersOrientation[cornersPermutation[0]]+2)%3;
     cornersOrientation[cornersPermutation[3]] = (cornersOrientation[cornersPermutation[3]]+1)%3;
-    cornersOrientation[cornersPermutation[4]] = (cornersOrientation[cornersPermutation[6]]+1)%3;
+    cornersOrientation[cornersPermutation[4]] = (cornersOrientation[cornersPermutation[4]]+1)%3;
     cornersOrientation[cornersPermutation[7]] = (cornersOrientation[cornersPermutation[7]]+2)%3;
 
-    edgesOrientation[edgesPermutation[3]] = !edgesOrientation[2];
-    edgesOrientation[edgesPermutation[4]] = !edgesOrientation[6];
-    edgesOrientation[edgesPermutation[7]] = !edgesOrientation[7];
-    edgesOrientation[edgesPermutation[11]] = !edgesOrientation[10];
+    edgesOrientation[edgesPermutation[3]] = !edgesOrientation[edgesPermutation[3]];
+    edgesOrientation[edgesPermutation[4]] = !edgesOrientation[edgesPermutation[4]];
+    edgesOrientation[edgesPermutation[7]] = !edgesOrientation[edgesPermutation[7]];
+    edgesOrientation[edgesPermutation[11]] = !edgesOrientation[edgesPermutation[11]];
 
 }
