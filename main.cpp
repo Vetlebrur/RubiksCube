@@ -31,7 +31,11 @@ int main() {
     // cube.move_R_prime();
     
     cube3D.move_B();
+    //cube3D.move_U();
     cube3D.move_U();
+    //cube3D.move_R();
+    cube3D.move_R();
+    cube3D.move_D();
 
     while(!window.should_close()) {
         window.setBackgroundColor(Color::black);

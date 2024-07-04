@@ -27,7 +27,7 @@ class Cube3D{
 
         int edgesPermutation[12] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         bool edgesOrientation[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; 
-        int edges[12][2] = {{5, 1}, {5, 2}, {5, 3}, {5, 4}, {1, 4}, {2, 1}, {2, 3}, {4, 3}, {0, 1}, {0, 2}, {0, 3}, {0, 4}};
+        int edges[12][2] = {{5, 1}, {5, 2}, {5, 3}, {5, 4}, {4, 1}, {2, 1}, {2, 3}, {4, 3}, {0, 1}, {0, 2}, {0, 3}, {0, 4}};
 
         string cubeString = "000000000111111111222222222333333333444444444555555555";
 
@@ -41,6 +41,10 @@ class Cube3D{
         }
         void swap_edges(int a,int b){
             swap(edgesPermutation[a],edgesPermutation[b]);
+        }
+
+        void twist_corner(int cornerIndex, int amount){
+            cornersOrientation[cornersPermutation[cornerIndex]] = (cornersOrientation[cornersPermutation[cornerIndex]] + amount) % 3;
         }
 
         void geometricToFacelet();
