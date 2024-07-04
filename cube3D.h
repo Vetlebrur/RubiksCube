@@ -46,6 +46,9 @@ class Cube3D{
         void twist_corner(int cornerIndex, int amount){
             cornersOrientation[cornersPermutation[cornerIndex]] = (cornersOrientation[cornersPermutation[cornerIndex]] + amount) % 3;
         }
+        void flip_edge(int cornerIndex){
+            edgesOrientation[edgesPermutation[cornerIndex]] = !edgesOrientation[edgesPermutation[cornerIndex]];
+        }
 
         void geometricToFacelet();
 

@@ -20,22 +20,39 @@ constexpr int cube_tile_size = 50;
 constexpr int cube_tile_padding = 5;
 int main() {
     TDT4102::AnimationWindow window(100,100,1024,1024);
+    window.setBackgroundColor(Color::black);
+    const auto start1{std::chrono::steady_clock::now()};
     Cube cube = Cube(cube_x, cube_y, cube_tile_size, cube_tile_padding);
+  
+    for (int i = 0; i < 1000000; i++){
+        cube.move_B();
+        cube.move_U();
+        cube.move_R();
+        cube.move_D();
+    }
+    cube.draw_cube(window);
+
+    cube.draw_cube(window);
+    const auto end1{std::chrono::steady_clock::now()};
+    const std::chrono::duration<double> elapsed_seconds1{end1 - start1};
+    std::cout << elapsed_seconds1.count()<<endl;
+    const auto start2{std::chrono::steady_clock::now()};
     Cube3D cube3D = Cube3D(cube_x, cube_y, cube_tile_size, cube_tile_padding);
-    // U' D' L' B' F' R'
-    // cube.move_U_prime();
-    // cube.move_D_prime();
-    // cube.move_L_prime();
-    // cube.move_B_prime();
-    // cube.move_F_prime();
-    // cube.move_R_prime();
+
+    for (int i = 0; i < 1000000; i++){
+        cube3D.move_B();
+        cube3D.move_U();
+        cube3D.move_R();
+        cube3D.move_D();
+    }
+    cube3D.geometricToFacelet();
+    cube3D.draw(window);
+    const auto end2{std::chrono::steady_clock::now()};
+    const std::chrono::duration<double> elapsed_seconds2{end2 - start2};
+    std::cout << elapsed_seconds2.count()<<endl;
+
     
-    cube3D.move_B();
-    //cube3D.move_U();
-    cube3D.move_U();
-    //cube3D.move_R();
-    cube3D.move_R();
-    cube3D.move_D();
+    
 
     while(!window.should_close()) {
         window.setBackgroundColor(Color::black);

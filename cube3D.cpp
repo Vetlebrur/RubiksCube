@@ -214,11 +214,8 @@ void Cube3D::move_B(){
     twist_corner(4, 1);
     twist_corner(7, 2);
 
-
-
-    edgesOrientation[edgesPermutation[3]] = !edgesOrientation[edgesPermutation[3]];
-    edgesOrientation[edgesPermutation[4]] = !edgesOrientation[edgesPermutation[4]];
-    edgesOrientation[edgesPermutation[7]] = !edgesOrientation[edgesPermutation[7]];
-    edgesOrientation[edgesPermutation[11]] = !edgesOrientation[edgesPermutation[11]];
-
+    flip_edge(3);
+    flip_edge(4);
+    flip_edge(7);
+    flip_edge(11);
 }
